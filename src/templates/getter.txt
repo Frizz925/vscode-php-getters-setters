@@ -1,0 +1,10 @@
+
+/**
+ * description
+ *
+ * @return type
+ */
+public function getterName()
+{
+    return $this->name;
+}

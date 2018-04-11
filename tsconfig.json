@@ -10,6 +10,8 @@
         "rootDir": "src"
     },
     "exclude": [
-        ".vscode-test"
+        ".vscode-test",
+        "node_modules",
+        "src/stubs"
     ]
 }

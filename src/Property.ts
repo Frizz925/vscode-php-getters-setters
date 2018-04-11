@@ -1,4 +1,3 @@
-
 'use strict';
 
 import * as vscode from 'vscode';
@@ -11,8 +10,7 @@ export default class Property {
     private typeHint: string = null;
     private pseudoTypes = ['mixed', 'number', 'callback', 'array|object', 'void'];
 
-    public constructor(name: string)
-    {
+    public constructor(name: string) {
         this.name = name;
     }
 
@@ -29,7 +27,7 @@ export default class Property {
             throw new Error('No property found. Please select a property to use this extension.');
         }
 
-        let property = new Property(selectedWord.substring(1, selectedWord.length));
+        const property = new Property(selectedWord.substring(1, selectedWord.length));
 
         const activeLineNumber = activePosition.line;
         const activeLine = editor.document.lineAt(activeLineNumber);
@@ -63,8 +61,8 @@ export default class Property {
             }
 
             // Remove spaces & tabs
-            const lineParts = text.split(' ').filter(function(value){
-                return value !== '' && value !== "\t" && value !== "*";
+            const lineParts = text.split(' ').filter(value => {
+                return value !== '' && value !== '\t' && value !== '*';
             });
 
             const varPosition = lineParts.indexOf('@var');
@@ -73,7 +71,7 @@ export default class Property {
             if (-1 !== varPosition) {
                 property.setType(lineParts[varPosition + 1]);
 
-                var descriptionParts = lineParts.slice(varPosition + 2);
+                const descriptionParts = lineParts.slice(varPosition + 2);
 
                 if (descriptionParts.length) {
                     property.description = descriptionParts.join(` `);
@@ -96,7 +94,7 @@ export default class Property {
         return Property.fromEditorPosition(editor, editor.selection.active);
     }
 
-    generateMethodDescription(prefix : string) : string {
+    generateMethodDescription(prefix: string): string {
         if (this.description) {
             return prefix + this.description.charAt(0).toLowerCase() + this.description.substring(1);
         }
@@ -104,51 +102,51 @@ export default class Property {
         return prefix + `the value of ` + this.name;
     }
 
-    generateMethodName(prefix : string) : string {
+    generateMethodName(prefix: string): string {
         return prefix + this.name.charAt(0).toUpperCase() + this.name.substring(1);
     }
 
-    getDescription() : string {
+    getDescription(): string {
         return this.description;
     }
 
-    getIndentation() : string {
+    getIndentation(): string {
         return this.indentation;
     }
 
-    getName() : string {
+    getName(): string {
         return this.name;
     }
 
-    getterDescription() : string {
+    getterDescription(): string {
         return this.generateMethodDescription('Get ');
     }
 
-    getterName() : string {
+    getterName(): string {
         return this.generateMethodName('get');
     }
 
-    getType() : string {
+    getType(): string {
         return this.type;
     }
 
-    getTypeHint() : string {
+    getTypeHint(): string {
         return this.typeHint;
     }
 
-    isValidTypeHint(type : string) {
-        return (-1 === type.indexOf('|') && -1 === this.pseudoTypes.indexOf(type));
+    isValidTypeHint(type: string) {
+        return -1 === type.indexOf('|') && -1 === this.pseudoTypes.indexOf(type);
     }
 
-    setterDescription() : string {
+    setterDescription(): string {
         return this.generateMethodDescription('Set ');
     }
 
-    setterName() : string {
+    setterName(): string {
         return this.generateMethodName('set');
     }
 
-    setType(type : string) {
+    setType(type: string) {
         this.type = type;
 
         if (this.isValidTypeHint(type)) {

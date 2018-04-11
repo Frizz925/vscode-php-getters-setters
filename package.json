@@ -119,9 +119,15 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
+        "@types/chai": "^4.1.2",
+        "@types/mocha": "^2.2.42",
+        "@types/mockery": "^1.4.29",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "chai": "^4.1.2",
+        "mockery": "^2.1.0",
+        "ts-node": "^5.0.1",
+        "tslint-config-prettier": "^1.10.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6"
     }
 }

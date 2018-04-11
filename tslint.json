@@ -1,0 +1,13 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended", "tslint-config-prettier", "tslint-no-unused-expression-chai"],
+    "jsRules": {},
+    "rules": {
+        "indent": [true, "spaces", 4],
+        "member-ordering": false,
+        "member-access": false,
+        "no-empty": false,
+        "ordered-imports": false
+    },
+    "rulesDirectory": []
+}

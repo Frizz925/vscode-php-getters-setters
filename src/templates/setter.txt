@@ -1,0 +1,12 @@
+
+/**
+ * description
+ *
+ * @param type $name
+ * @return self
+ */
+public function setterName(typeHint: $name)
+{
+    $this->name = $name;
+    return $this;
+}

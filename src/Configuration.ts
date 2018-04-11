@@ -3,9 +3,8 @@
 import * as vscode from 'vscode';
 
 export default class Configuration {
-    private config : vscode.WorkspaceConfiguration;
-    public constructor()
-    {
+    private config: vscode.WorkspaceConfiguration;
+    public constructor() {
         this.config = vscode.workspace.getConfiguration('phpGettersSetters');
     }
 
@@ -13,7 +12,7 @@ export default class Configuration {
         return this.config.get(key, defaultValue);
     }
 
-    getInt(key: string, defaultValue : number) : number {
-        return parseInt(this.get(key, defaultValue));
+    getInt(key: string, defaultValue: number): number {
+        return Number.parseInt(this.get(key, defaultValue));
     }
 }
